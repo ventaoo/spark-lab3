@@ -1,0 +1,30 @@
+[2025-04-24 12:04:56,656] [INFO] - 程序启动，开始加载配置
+[2025-04-24 12:04:57,483] [INFO] - Spark session created...
+[2025-04-24 12:06:41,880] [INFO] - Model start training...
+[2025-04-24 12:09:38,562] [INFO] - Inertia: 400268.73
+[2025-04-24 12:09:39,598] [INFO] - 模型保存成功: /Users/zwt/Desktop/github_project/spark-lab/models/kmeans_12:09:38
+[2025-04-24 12:10:29,937] [INFO] - [INFO] 聚类图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/pca_clusters.png
+[2025-04-24 12:10:30,007] [INFO] - [INFO] 聚类数量条形图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/cluster_counts.png
+[2025-04-24 12:32:18,610] [INFO] - 程序启动，开始加载配置
+[2025-04-24 12:33:21,044] [INFO] - 程序启动，开始加载配置
+[2025-04-24 12:33:47,633] [INFO] - 程序启动，开始加载配置
+[2025-04-24 12:33:48,301] [INFO] - Spark session created...
+[2025-04-24 12:35:28,307] [INFO] - Model start training...
+[2025-04-24 12:38:18,965] [INFO] - Inertia: 400268.73
+[2025-04-24 12:38:19,924] [INFO] - 模型保存成功: /Users/zwt/Desktop/github_project/spark-lab/models/kmeans_12:38:18
+[2025-04-24 12:39:02,968] [INFO] - [INFO] 聚类图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/pca_clusters.png
+[2025-04-24 12:39:03,024] [INFO] - [INFO] 聚类数量条形图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/cluster_counts.png
+[2025-04-24 12:43:01,455] [INFO] - 程序启动，开始加载配置
+[2025-04-24 12:43:02,113] [INFO] - Spark session created...
+[2025-04-24 12:44:41,727] [INFO] - Model start training...
+[2025-04-24 12:47:32,738] [INFO] - Inertia: 400268.73
+[2025-04-24 12:47:33,789] [INFO] - 模型保存成功: /Users/zwt/Desktop/github_project/spark-lab/models/kmeans_12:47:32
+[2025-04-24 12:48:17,284] [INFO] - [INFO] 聚类图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/pca_clusters.png
+[2025-04-24 12:48:17,341] [INFO] - [INFO] 聚类数量条形图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/cluster_counts.png
+[2025-04-24 12:51:25,244] [INFO] - 程序启动，开始加载配置
+[2025-04-24 12:51:25,931] [INFO] - Spark session created...
+[2025-04-24 12:53:09,580] [INFO] - Model start training...
+[2025-04-24 12:56:05,663] [INFO] - Inertia: 400268.73
+[2025-04-24 12:56:06,565] [INFO] - 模型保存成功: /Users/zwt/Desktop/github_project/spark-lab/models/kmeans_12:56:05
+[2025-04-24 12:56:51,315] [INFO] - [INFO] 聚类图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/pca_clusters.png
+[2025-04-24 12:56:51,372] [INFO] - [INFO] 聚类数量条形图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/cluster_counts.png
