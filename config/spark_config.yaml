@@ -9,4 +9,4 @@ config:
   spark.ui.showConsoleProgress: true
 
   spark.eventLog.enabled: true
-  spark.eventLog.dir: file:///Users/zwt/Desktop/github_project/spark-lab/outputs/spark-events
+  spark.eventLog.dir: /app/outputs/spark-events

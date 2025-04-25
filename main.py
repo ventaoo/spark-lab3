@@ -13,13 +13,10 @@ logger = setup_logger()
 if __name__ == "__main__":
     config_path, data_path, model_path = sys.argv[1:4]
     os.makedirs("./outputs/spark-events", exist_ok=True)
-    """
-    export SPARK_HISTORY_OPTS="-Dspark.history.fs.logDirectory=file:///Users/zwt/Desktop/github_project/spark-lab/outputs/spark-events"
-    $SPARK_HOME/sbin/start-history-server.sh
-    """
 
     logger.info("程序启动，开始加载配置")
     config = load_config(config_path)
+    logger.info(f"Spark log save to: {config.get('config').get('spark.eventLog.dir')}")
     spark = create_spark_session(config)
     logger.info("Spark session created...")
 
@@ -49,8 +46,8 @@ if __name__ == "__main__":
     except Exception as e:
         logger.error(f"保存模型失败: {e}")
 
-    result_pdf = predictions.sample(fraction=0.1, seed=42).toPandas()
-    output_path = plot_pca_clusters(result_pdf)
-    logger.info(f"[INFO] 聚类图已保存至：{os.path.abspath(output_path)}")
-    output_path = plot_cluster_counts(result_pdf)
-    logger.info(f"[INFO] 聚类数量条形图已保存至：{os.path.abspath(output_path)}")
+    # result_pdf = predictions.sample(fraction=0.1, seed=42).toPandas()
+    # output_path = plot_pca_clusters(result_pdf)
+    # logger.info(f"[INFO] 聚类图已保存至：{os.path.abspath(output_path)}")
+    # output_path = plot_cluster_counts(result_pdf)
+    # logger.info(f"[INFO] 聚类数量条形图已保存至：{os.path.abspath(output_path)}")
