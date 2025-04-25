@@ -34,7 +34,6 @@ if __name__ == "__main__":
     logger.info('Model start training...')
     model = train_kmeans(df_sampled, k=3)
     predictions = model.transform(df_sampled)
-
     logger.info(f"Inertia: {model.summary.trainingCost:.2f}")
 
     try:
@@ -45,9 +44,3 @@ if __name__ == "__main__":
         logger.info(f"模型保存成功: {os.path.abspath(model_path)}")
     except Exception as e:
         logger.error(f"保存模型失败: {e}")
-
-    # result_pdf = predictions.sample(fraction=0.1, seed=42).toPandas()
-    # output_path = plot_pca_clusters(result_pdf)
-    # logger.info(f"[INFO] 聚类图已保存至：{os.path.abspath(output_path)}")
-    # output_path = plot_cluster_counts(result_pdf)
-    # logger.info(f"[INFO] 聚类数量条形图已保存至：{os.path.abspath(output_path)}")
