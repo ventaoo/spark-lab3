@@ -20,9 +20,9 @@ class ClusterVisualizer:
             x=pca_result[:,0], y=pca_result[:,1],
             hue=predictions_pdf["prediction"], palette="viridis", alpha=0.6
         )
-        plt.title("聚类结果 (PCA降维)")
-        plt.xlabel("PC1")
-        plt.ylabel("PC2")
+        plt.title("Cluster Results (PCA Reduced Dimensions)")
+        plt.xlabel("Principal Component 1")
+        plt.ylabel("Principal Component 2")
         
         output_path = os.path.join(self.output_dir, output_filename)
         plt.tight_layout()
@@ -35,7 +35,7 @@ class ClusterVisualizer:
         """Plot distribution of samples across clusters."""
         plt.figure(figsize=(8, 4))
         sns.countplot(x="prediction", data=predictions_pdf)
-        plt.title("各类样本数量分布")
+        plt.title("Sample Distribution Across Clusters")
         
         output_path = os.path.join(self.output_dir, output_filename)
         plt.tight_layout()

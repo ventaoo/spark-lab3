@@ -1,4 +1,4 @@
-app_name: FoodClustering
+app_name: ModelTraining
 config:
   spark.driver.memory: 4g
   spark.executor.memory: 4g

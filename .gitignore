@@ -1,8 +1,20 @@
 *.gz
-food_kmeans_model/*
 
-data/*
+model-service/data/*
 models/*
 outputs/*
 
 __pycache__
+
+
+data-mart/project/project
+data-mart/project/target
+data-mart/target
+data-mart/data
+
+# --- Logs & temp files ---
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store

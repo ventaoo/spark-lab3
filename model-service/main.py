@@ -10,83 +10,63 @@ from src.visualization.plotter import ClusterVisualizer
 from src.utils.logger import AppLogger
 
 def main():
-    # 解析命令行参数
+    # Parse command line arguments
     if len(sys.argv) < 4:
         print("Usage: python main.py <config_path> <data_path> <model_path>")
         sys.exit(1)
     
     config_path, data_path, model_path = sys.argv[1:4]
     
-    # 确保输出目录存在
+    # Ensure output directory exists
     os.makedirs("./outputs/spark-events", exist_ok=True)
     
-    # 初始化日志记录器
+    # Initialize logger
     logger = AppLogger(log_file="./outputs/app.log").get_logger()
-    logger.info("程序启动，开始加载配置")
+    logger.info("Application started, loading configuration...")
     
     try:
-        # 加载配置
+        # Load configuration
         config = ConfigLoader.load_yaml_config(config_path)
         logger.info(f"Spark log save to: {config.get('spark', {}).get('config', {}).get('spark.eventLog.dir')}")
         
-        # 初始化Spark
+        # Initialize Spark
         spark_manager = SparkManager(config.get('spark', {}))
         spark = spark_manager.create_session()
-        logger.info("Spark session created...")
+        logger.info("Spark session created successfully...")
         
-        # 定义常量和参数
-        COLUMNS = ["fat_100g", "carbohydrates_100g", "proteins_100g"]
-        RANGES = {
-            "fat_100g": (0, 100),
-            "carbohydrates_100g": (0, 100),
-            "proteins_100g": (0, 100),
-        }
-        K = 3  # 聚类数量
-        SAMPLE_FRACTION = 0.1  # 采样比例
-        SEED = 42  # 随机种子
+        # Read input data
+        df = spark.read.parquet(data_path)
         
-        # 数据处理
-        data_processor = DataProcessor(spark)
-        df_clean = data_processor.load_data(data_path)
-        df_clean = data_processor.clean_data(df_clean, COLUMNS, RANGES)
-        
-        # 特征工程
-        df_vec = FeatureEngineer.assemble_features(df_clean, COLUMNS)
-        df_scaled = FeatureEngineer.scale_features(df_vec)
-        
-        # 采样数据
-        df_sampled = df_scaled.sample(fraction=SAMPLE_FRACTION, seed=SEED)
-        
-        # 模型训练
-        logger.info('Model start training...')
-        model = ClusteringModel(k=K, seed=SEED)
-        model.train(df_sampled)
-        predictions = model.model.transform(df_sampled)
+        # Model training
+        logger.info('Model training started...')
+        model = ClusteringModel(k=3, seed=42)
+        model.train(df)
+        predictions = model.model.transform(df)
         logger.info(f"Inertia: {model.model.summary.trainingCost:.2f}")
         
-        # 模型保存
+        # Save model
         try:
             if os.path.exists(model_path):
-                # 如果路径存在，使用覆盖模式保存
+                # If path exists, save with overwrite mode
                 model.save(model_path, overwrite=True)
-                logger.info(f"模型已覆盖保存: {os.path.abspath(model_path)}")
+                logger.info(f"Model overwritten at: {os.path.abspath(model_path)}")
             else:
                 model.save(model_path)
-                logger.info(f"模型保存成功: {os.path.abspath(model_path)}")
+                logger.info(f"Model saved successfully at: {os.path.abspath(model_path)}")
         except Exception as e:
-            logger.error(f"保存模型失败: {e}")
+            logger.error(f"Failed to save model: {e}")
             raise
         
-        # 可视化
+        # Visualization
         visualizer = ClusterVisualizer()
         predictions_pdf = predictions.toPandas()
         
         pca_path = visualizer.plot_pca_clusters(predictions_pdf)
         counts_path = visualizer.plot_cluster_counts(predictions_pdf)
-        logger.info(f"可视化结果保存至: {pca_path} 和 {counts_path}")
+        logger.info(f"Visualization results saved to: {pca_path} and {counts_path}")
         
     except Exception as e:
-        logger.error(f"程序运行出错: {str(e)}", exc_info=True)
+        logger.error(f"Application error: {str(e)}", exc_info=True)
         raise
         
     finally:

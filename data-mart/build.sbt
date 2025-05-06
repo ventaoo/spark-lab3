@@ -10,6 +10,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "3.3.2",
   "org.apache.spark" %% "spark-sql"  % "3.3.2",
   "com.typesafe"      % "config"     % "1.4.2",             // 配置支持
+  "org.apache.spark" %% "spark-mllib" % "3.3.0",            // 添加ML库依赖
   "org.scalatest"    %% "scalatest"  % "3.2.16" % Test       // 单元测试
 )
 

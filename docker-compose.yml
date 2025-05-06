@@ -1,56 +1,19 @@
+version: "3.8"
 services:
-  namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
-    container_name: namenode
-    ports:
-      - "9870:9870"   # HDFS Web UI
-      - "9000:9000"   # HDFS 文件服务端口
-    environment:
-      - CLUSTER_NAME=itmo_cluster
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
-      - HDFS_CONF_dfs_replication=1
+  datamart:
+    build: ./data-mart
+    image: datamart:latest
     volumes:
-      - hadoop_namenode:/hadoop/dfs/name
-      - ./data:/app/data
-    networks:
-      - hadoop-net
-
-  datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-    container_name: datanode
-    depends_on:
-      - namenode
+      - ./data-mart/data:/data
     environment:
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
-      - HDFS_CONF_dfs_datanode_address=0.0.0.0:9866
-      - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:9864
-      - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:9867
-    volumes:
-      - hadoop_datanode:/hadoop/dfs/data
-    networks:
-      - hadoop-net
-
-  spark:
-    image: bitnami/spark:3.5.1
-    container_name: spark
-    depends_on:
-      - namenode
-    volumes:
-      - .:/app/
-    environment:
-      - SPARK_MODE=master
-      - SPARK_LOCAL_IP=spark
-      - SPARK_MASTER_URL=spark://spark:7077
-    ports:
-      - "8080:8080"
-    networks:
-      - hadoop-net
-    command: sleep infinity
-
-volumes:
-  hadoop_namenode:
-  hadoop_datanode:
-
-networks:
-  hadoop-net:
-    driver: bridge
+      - INPUT_PATH=/data/en.openfoodfacts.org.products.csv.gz
+      - OUTPUT_PATH=/data/output_parquet
+      - SPARK_MASTER=local[*]
+    command: [
+      "/opt/bitnami/spark/bin/spark-submit",
+      "--class", "com.example.datamart.DataMartApp",
+      "--master", "local[*]",
+      "/opt/app/datamart.jar",
+      "--inputPath", "${INPUT_PATH}",
+      "--outputPath", "${OUTPUT_PATH}"
+    ]

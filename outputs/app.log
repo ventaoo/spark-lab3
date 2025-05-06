@@ -1,30 +1,24 @@
-[2025-04-24 12:04:56,656] [INFO] - 程序启动，开始加载配置
-[2025-04-24 12:04:57,483] [INFO] - Spark session created...
-[2025-04-24 12:06:41,880] [INFO] - Model start training...
-[2025-04-24 12:09:38,562] [INFO] - Inertia: 400268.73
-[2025-04-24 12:09:39,598] [INFO] - 模型保存成功: /Users/zwt/Desktop/github_project/spark-lab/models/kmeans_12:09:38
-[2025-04-24 12:10:29,937] [INFO] - [INFO] 聚类图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/pca_clusters.png
-[2025-04-24 12:10:30,007] [INFO] - [INFO] 聚类数量条形图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/cluster_counts.png
-[2025-04-24 12:32:18,610] [INFO] - 程序启动，开始加载配置
-[2025-04-24 12:33:21,044] [INFO] - 程序启动，开始加载配置
-[2025-04-24 12:33:47,633] [INFO] - 程序启动，开始加载配置
-[2025-04-24 12:33:48,301] [INFO] - Spark session created...
-[2025-04-24 12:35:28,307] [INFO] - Model start training...
-[2025-04-24 12:38:18,965] [INFO] - Inertia: 400268.73
-[2025-04-24 12:38:19,924] [INFO] - 模型保存成功: /Users/zwt/Desktop/github_project/spark-lab/models/kmeans_12:38:18
-[2025-04-24 12:39:02,968] [INFO] - [INFO] 聚类图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/pca_clusters.png
-[2025-04-24 12:39:03,024] [INFO] - [INFO] 聚类数量条形图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/cluster_counts.png
-[2025-04-24 12:43:01,455] [INFO] - 程序启动，开始加载配置
-[2025-04-24 12:43:02,113] [INFO] - Spark session created...
-[2025-04-24 12:44:41,727] [INFO] - Model start training...
-[2025-04-24 12:47:32,738] [INFO] - Inertia: 400268.73
-[2025-04-24 12:47:33,789] [INFO] - 模型保存成功: /Users/zwt/Desktop/github_project/spark-lab/models/kmeans_12:47:32
-[2025-04-24 12:48:17,284] [INFO] - [INFO] 聚类图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/pca_clusters.png
-[2025-04-24 12:48:17,341] [INFO] - [INFO] 聚类数量条形图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/cluster_counts.png
-[2025-04-24 12:51:25,244] [INFO] - 程序启动，开始加载配置
-[2025-04-24 12:51:25,931] [INFO] - Spark session created...
-[2025-04-24 12:53:09,580] [INFO] - Model start training...
-[2025-04-24 12:56:05,663] [INFO] - Inertia: 400268.73
-[2025-04-24 12:56:06,565] [INFO] - 模型保存成功: /Users/zwt/Desktop/github_project/spark-lab/models/kmeans_12:56:05
-[2025-04-24 12:56:51,315] [INFO] - [INFO] 聚类图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/pca_clusters.png
-[2025-04-24 12:56:51,372] [INFO] - [INFO] 聚类数量条形图已保存至：/Users/zwt/Desktop/github_project/spark-lab/outputs/cluster_counts.png
+[2025-05-06 19:05:57,596] [INFO] - 程序启动，开始加载配置
+[2025-05-06 19:05:57,597] [INFO] - Spark log save to: None
+[2025-05-06 19:05:59,372] [INFO] - Spark session created...
+[2025-05-06 19:06:01,067] [INFO] - Model start training...
+[2025-05-06 19:06:05,821] [INFO] - Inertia: 400268.73
+[2025-05-06 19:06:06,186] [INFO] - 模型已覆盖保存: /Users/zwt/Desktop/github_project/spark-lab3/models
+[2025-05-06 19:06:16,936] [INFO] - 可视化结果保存至: ./outputs/visualizations/pca_clusters.png 和 ./outputs/visualizations/cluster_counts.png
+[2025-05-06 19:06:17,293] [INFO] - Spark session stopped
+[2025-05-06 19:17:00,390] [INFO] - Application started, loading configuration...
+[2025-05-06 19:17:00,391] [INFO] - Spark log save to: None
+[2025-05-06 19:17:02,167] [INFO] - Spark session created successfully...
+[2025-05-06 19:17:03,897] [INFO] - Model training started...
+[2025-05-06 19:17:09,092] [INFO] - Inertia: 400268.73
+[2025-05-06 19:17:09,494] [INFO] - Model overwritten at: /Users/zwt/Desktop/github_project/spark-lab3/models
+[2025-05-06 19:17:21,082] [INFO] - Visualization results saved to: ./outputs/visualizations/pca_clusters.png and ./outputs/visualizations/cluster_counts.png
+[2025-05-06 19:17:21,447] [INFO] - Spark session stopped
+[2025-05-06 19:18:29,011] [INFO] - Application started, loading configuration...
+[2025-05-06 19:18:29,012] [INFO] - Spark log save to: None
+[2025-05-06 19:18:30,557] [INFO] - Spark session created successfully...
+[2025-05-06 19:18:32,036] [INFO] - Model training started...
+[2025-05-06 19:18:35,923] [INFO] - Inertia: 400268.73
+[2025-05-06 19:18:36,260] [INFO] - Model overwritten at: /Users/zwt/Desktop/github_project/spark-lab3/models
+[2025-05-06 19:18:46,265] [INFO] - Visualization results saved to: ./outputs/visualizations/pca_clusters.png and ./outputs/visualizations/cluster_counts.png
+[2025-05-06 19:18:46,614] [INFO] - Spark session stopped
