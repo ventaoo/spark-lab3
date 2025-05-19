@@ -4,8 +4,10 @@ import com.typesafe.config.{ConfigFactory, Config => TSConfig}
 
 case class Config(
   inputPath: String,
-  outputPath: String,
-  sparkMaster: String
+  sparkMaster: String,
+  dbUrl: String,
+  dbUser: String,
+  dbPassword: String
 )
 
 object Config {
@@ -13,7 +15,9 @@ object Config {
 
   def load(): Config = Config(
     inputPath   = conf.getString("datamart.inputPath"),
-    outputPath  = conf.getString("datamart.outputPath"),
-    sparkMaster = conf.getString("datamart.sparkMaster")
+    sparkMaster = conf.getString("datamart.sparkMaster"),
+    dbUrl       = conf.getString("datamart.dbUrl"),
+    dbUser      = conf.getString("datamart.dbUser"),
+    dbPassword  = conf.getString("datamart.dbPassword")
   )
 }

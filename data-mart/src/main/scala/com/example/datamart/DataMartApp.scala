@@ -4,7 +4,7 @@ import org.apache.spark.sql.{SparkSession, DataFrame}
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
 import org.apache.spark.ml.feature.{VectorAssembler, StandardScaler}
-import org.apache.spark.ml.linalg.Vectors
+import org.apache.spark.ml.linalg.Vector
 
 object DataMartApp {
 
@@ -31,11 +31,15 @@ object DataMartApp {
     // 3. 特征工程
     val processedDF = processFeatures(cleanedDF)
 
-    // 4. 采样并写出为 Parquet 格式
-    processedDF.sample(0.1, seed = 42)
-      .write
+    // 4. 采样并写入 Database
+    val props = new java.util.Properties()
+    props.setProperty("user", cfg.dbUser)
+    props.setProperty("password", cfg.dbPassword)
+    props.setProperty("driver", "org.postgresql.Driver")
+
+    processedDF.write
       .mode("overwrite")
-      .parquet(cfg.outputPath)
+      .jdbc(cfg.dbUrl, "processed_data", props)
 
     spark.stop()
   }
@@ -87,6 +91,17 @@ object DataMartApp {
       .setWithMean(true)
 
     val scalerModel = scaler.fit(assembledDF)
-    scalerModel.transform(assembledDF)
+    val scaledDF = scalerModel.transform(assembledDF)
+
+    // 定义 UDF：将 Vector 转换为 String
+    val vectorToString = udf((vector: Vector) => vector.toArray.mkString(","))
+
+    // 添加字符串形式的列，并删除原始 Vector 列
+    val resultDF = scaledDF
+      .withColumn("features_str", vectorToString(col("features")))
+      .withColumn("scaled_features_str", vectorToString(col("scaled_features")))
+      .drop("features", "scaled_features")
+
+    resultDF
   }
 }
