@@ -6,9 +6,12 @@ services:
     volumes:
       - ./data-mart/data:/data
     environment:
-      - INPUT_PATH=/data/en.openfoodfacts.org.products.csv.gz
-      - OUTPUT_PATH=/data/output_parquet
-      - SPARK_MASTER=local[*]
+      - INPUT_PATH=${INPUT_PATH}
+      - OUTPUT_PATH=${OUTPUT_PATH}
+      - SPARK_MASTER=${SPARK_MASTER}
+      - DB_URL=${DB_URL}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
     command: [
       "/opt/bitnami/spark/bin/spark-submit",
       "--class", "com.example.datamart.DataMartApp",

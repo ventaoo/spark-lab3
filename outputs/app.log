@@ -22,3 +22,461 @@
 [2025-05-06 19:18:36,260] [INFO] - Model overwritten at: /Users/zwt/Desktop/github_project/spark-lab3/models
 [2025-05-06 19:18:46,265] [INFO] - Visualization results saved to: ./outputs/visualizations/pca_clusters.png and ./outputs/visualizations/cluster_counts.png
 [2025-05-06 19:18:46,614] [INFO] - Spark session stopped
+[2025-05-19 15:23:38,119] [INFO] - Application started, loading configuration...
+[2025-05-19 15:23:38,120] [INFO] - Spark log save to: None
+[2025-05-19 15:23:39,994] [INFO] - Spark session created successfully...
+[2025-05-19 15:23:39,994] [INFO] - Reading data from database: jdbc:postgresql://host.docker.internal:5432/postgres, table: processed_data
+[2025-05-19 15:23:40,360] [ERROR] - Application error: An error occurred while calling o25.jdbc.
+: java.lang.ClassNotFoundException: org.postgresql.Driver
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at org.apache.spark.sql.execution.datasources.jdbc.DriverRegistry$.register(DriverRegistry.scala:46)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1$adapted(JDBCOptions.scala:103)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:41)
+	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:34)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at org.apache.spark.sql.DataFrameReader.jdbc(DataFrameReader.scala:249)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 47, in main
+    df = spark.read.jdbc(url=properties["jdbc_url"], table=properties['db_table'], properties=properties)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/sql/readwriter.py", line 946, in jdbc
+    return self._df(self._jreader.jdbc(url, table, jprop))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o25.jdbc.
+: java.lang.ClassNotFoundException: org.postgresql.Driver
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at org.apache.spark.sql.execution.datasources.jdbc.DriverRegistry$.register(DriverRegistry.scala:46)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1$adapted(JDBCOptions.scala:103)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:41)
+	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:34)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at org.apache.spark.sql.DataFrameReader.jdbc(DataFrameReader.scala:249)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+[2025-05-19 15:23:40,430] [INFO] - Spark session stopped
+[2025-05-19 15:35:18,620] [INFO] - Application started, loading configuration...
+[2025-05-19 15:35:18,621] [INFO] - Spark event log dir: None
+[2025-05-19 15:35:20,022] [INFO] - Spark session created successfully...
+[2025-05-19 15:35:20,374] [ERROR] - Application error: An error occurred while calling o35.load.
+: java.lang.ClassNotFoundException: org.postgresql.Driver
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at org.apache.spark.sql.execution.datasources.jdbc.DriverRegistry$.register(DriverRegistry.scala:46)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1$adapted(JDBCOptions.scala:103)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:41)
+	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:34)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 56, in main
+    .load()
+     ^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/sql/readwriter.py", line 314, in load
+    return self._df(self._jreader.load())
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o35.load.
+: java.lang.ClassNotFoundException: org.postgresql.Driver
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at org.apache.spark.sql.execution.datasources.jdbc.DriverRegistry$.register(DriverRegistry.scala:46)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1$adapted(JDBCOptions.scala:103)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:41)
+	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:34)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+[2025-05-19 15:35:20,461] [INFO] - Spark session stopped
+[2025-05-19 15:35:27,663] [INFO] - Application started, loading configuration...
+[2025-05-19 15:35:27,664] [INFO] - Spark event log dir: None
+[2025-05-19 15:35:29,035] [INFO] - Spark session created successfully...
+[2025-05-19 15:35:29,347] [ERROR] - Application error: An error occurred while calling o35.load.
+: java.lang.ClassNotFoundException: org.postgresql.Driver
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at org.apache.spark.sql.execution.datasources.jdbc.DriverRegistry$.register(DriverRegistry.scala:46)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1$adapted(JDBCOptions.scala:103)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:41)
+	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:34)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 56, in main
+    .load()
+     ^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/sql/readwriter.py", line 314, in load
+    return self._df(self._jreader.load())
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o35.load.
+: java.lang.ClassNotFoundException: org.postgresql.Driver
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at org.apache.spark.sql.execution.datasources.jdbc.DriverRegistry$.register(DriverRegistry.scala:46)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1$adapted(JDBCOptions.scala:103)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:103)
+	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:41)
+	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:34)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+[2025-05-19 15:35:29,479] [INFO] - Spark session stopped
+[2025-05-19 15:59:59,927] [INFO] - Application started, loading configuration...
+[2025-05-19 15:59:59,928] [INFO] - Spark log save to: None
+[2025-05-19 15:59:59,928] [ERROR] - Application error: 'spark'
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 55, in main
+    .config("spark.driver.memory", config["spark"]["config"]["spark.driver.memory"]) \
+                                   ~~~~~~^^^^^^^^^
+KeyError: 'spark'
+[2025-05-19 16:01:16,975] [INFO] - Application started, loading configuration...
+[2025-05-19 16:01:16,975] [INFO] - Spark log save to: /app/outputs/spark-events
+[2025-05-19 16:01:18,338] [ERROR] - Application error: An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
+: java.io.FileNotFoundException: File file:/app/outputs/spark-events does not exist
+	at org.apache.hadoop.fs.RawLocalFileSystem.deprecatedGetFileStatus(RawLocalFileSystem.java:779)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileLinkStatusInternal(RawLocalFileSystem.java:1100)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileStatus(RawLocalFileSystem.java:769)
+	at org.apache.hadoop.fs.FilterFileSystem.getFileStatus(FilterFileSystem.java:462)
+	at org.apache.spark.deploy.history.EventLogFileWriter.requireLogBaseDirAsDirectory(EventLogFileWriters.scala:77)
+	at org.apache.spark.deploy.history.SingleEventLogFileWriter.start(EventLogFileWriters.scala:221)
+	at org.apache.spark.scheduler.EventLoggingListener.start(EventLoggingListener.scala:81)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:632)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 69, in main
+    .getOrCreate()
+     ^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/context.py", line 203, in __init__
+    self._do_init(
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/context.py", line 296, in _do_init
+    self._jsc = jsc or self._initialize_context(self._conf._jconf)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/context.py", line 421, in _initialize_context
+    return self._jvm.JavaSparkContext(jconf)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/java_gateway.py", line 1587, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
+: java.io.FileNotFoundException: File file:/app/outputs/spark-events does not exist
+	at org.apache.hadoop.fs.RawLocalFileSystem.deprecatedGetFileStatus(RawLocalFileSystem.java:779)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileLinkStatusInternal(RawLocalFileSystem.java:1100)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileStatus(RawLocalFileSystem.java:769)
+	at org.apache.hadoop.fs.FilterFileSystem.getFileStatus(FilterFileSystem.java:462)
+	at org.apache.spark.deploy.history.EventLogFileWriter.requireLogBaseDirAsDirectory(EventLogFileWriters.scala:77)
+	at org.apache.spark.deploy.history.SingleEventLogFileWriter.start(EventLogFileWriters.scala:221)
+	at org.apache.spark.scheduler.EventLoggingListener.start(EventLoggingListener.scala:81)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:632)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+[2025-05-19 16:06:29,468] [INFO] - Application started, loading configuration...
+[2025-05-19 16:06:29,469] [INFO] - Spark log save to: None
+[2025-05-19 16:06:30,969] [INFO] - Spark session created successfully...
+[2025-05-19 16:06:30,969] [INFO] - Reading data from PostgreSQL...
+[2025-05-19 16:06:30,969] [ERROR] - Application error: 'user'
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 81, in main
+    df_pd = read_from_postgres(db_config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 23, in read_from_postgres
+    f"postgresql+psycopg2://{db_config['user']}:{db_config['password']}"
+                             ~~~~~~~~~^^^^^^^^
+KeyError: 'user'
+[2025-05-19 16:06:31,415] [INFO] - Spark session stopped
+[2025-05-19 16:07:48,931] [INFO] - Application started, loading configuration...
+[2025-05-19 16:07:48,931] [INFO] - Spark log save to: None
+[2025-05-19 16:07:50,362] [INFO] - Spark session created successfully...
+[2025-05-19 16:07:50,362] [INFO] - Reading data from PostgreSQL...
+[2025-05-19 16:07:50,362] [ERROR] - Application error: 'user'
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 81, in main
+    df_pd = read_from_postgres(db_config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 23, in read_from_postgres
+    f"postgresql+psycopg2://{db_config['user']}:{db_config['password']}"
+                             ~~~~~~~~~^^^^^^^^
+KeyError: 'user'
+[2025-05-19 16:07:50,807] [INFO] - Spark session stopped
+[2025-05-19 16:08:01,576] [INFO] - Application started, loading configuration...
+[2025-05-19 16:08:01,577] [INFO] - Spark log save to: None
+[2025-05-19 16:08:02,920] [INFO] - Spark session created successfully...
+[2025-05-19 16:08:02,921] [INFO] - Reading data from PostgreSQL...
+[2025-05-19 16:08:02,921] [ERROR] - Application error: 'user'
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 82, in main
+    df_pd = read_from_postgres(db_config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 24, in read_from_postgres
+    f"postgresql+psycopg2://{db_config['user']}:{db_config['password']}"
+                             ~~~~~~~~~^^^^^^^^
+KeyError: 'user'
+[2025-05-19 16:08:03,366] [INFO] - Spark session stopped
+[2025-05-19 16:08:58,270] [INFO] - Application started, loading configuration...
+[2025-05-19 16:08:58,271] [INFO] - Spark log save to: None
+[2025-05-19 16:08:59,721] [INFO] - Spark session created successfully...
+[2025-05-19 16:08:59,721] [INFO] - Reading data from PostgreSQL...
+[2025-05-19 16:08:59,721] [ERROR] - Application error: 'user'
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 83, in main
+    df_pd = read_from_postgres(db_config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 24, in read_from_postgres
+    f"postgresql+psycopg2://{db_config['user']}:{db_config['password']}"
+                             ~~~~~~~~~^^^^^^^^
+KeyError: 'user'
+[2025-05-19 16:09:00,162] [INFO] - Spark session stopped
+[2025-05-19 16:09:26,794] [INFO] - Application started, loading configuration...
+[2025-05-19 16:09:26,795] [INFO] - Spark log save to: None
+[2025-05-19 16:09:28,226] [INFO] - Spark session created successfully...
+[2025-05-19 16:09:28,226] [INFO] - Reading data from PostgreSQL...
+[2025-05-19 16:09:34,326] [INFO] - Data loaded from PostgreSQL and converted to Spark DataFrame.
+[2025-05-19 16:09:34,326] [INFO] - Model training started...
+[2025-05-19 16:09:34,359] [ERROR] - Application error: scaled_features does not exist. Available: fat_100g, carbohydrates_100g, proteins_100g, features_str, scaled_features_str
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 89, in main
+    model.train(df)
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/src/models/clustering_model.py", line 14, in train
+    self.model = kmeans.fit(df)
+                 ^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/ml/base.py", line 205, in fit
+    return self._fit(dataset)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/ml/wrapper.py", line 381, in _fit
+    java_model = self._fit_java(dataset)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/ml/wrapper.py", line 378, in _fit_java
+    return self._java_obj.fit(dataset._jdf)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.IllegalArgumentException: scaled_features does not exist. Available: fat_100g, carbohydrates_100g, proteins_100g, features_str, scaled_features_str
+[2025-05-19 16:09:34,421] [INFO] - Spark session stopped
+[2025-05-19 16:11:48,618] [INFO] - Application started, loading configuration...
+[2025-05-19 16:11:48,619] [INFO] - Spark log save to: None
+[2025-05-19 16:11:50,363] [INFO] - Spark session created successfully...
+[2025-05-19 16:11:50,363] [INFO] - Reading data from PostgreSQL...
+[2025-05-19 16:11:56,532] [INFO] - Data loaded from PostgreSQL and converted to Spark DataFrame.
+[2025-05-19 16:11:56,533] [INFO] - Model training started...
+[2025-05-19 16:11:56,588] [ERROR] - Application error: requirement failed: Column scaled_features_str must be of type equal to one of the following types: [struct<type:tinyint,size:int,indices:array<int>,values:array<double>>, array<double>, array<float>] but was actually of type string.
+Traceback (most recent call last):
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/main.py", line 89, in main
+    model.train(df)
+  File "/Users/zwt/Desktop/github_project/spark-lab3/model-service/src/models/clustering_model.py", line 14, in train
+    self.model = kmeans.fit(df)
+                 ^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/ml/base.py", line 205, in fit
+    return self._fit(dataset)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/ml/wrapper.py", line 381, in _fit
+    java_model = self._fit_java(dataset)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/ml/wrapper.py", line 378, in _fit_java
+    return self._java_obj.fit(dataset._jdf)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/Users/zwt/anaconda3/envs/big_data/lib/python3.11/site-packages/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.IllegalArgumentException: requirement failed: Column scaled_features_str must be of type equal to one of the following types: [struct<type:tinyint,size:int,indices:array<int>,values:array<double>>, array<double>, array<float>] but was actually of type string.
+[2025-05-19 16:11:56,734] [INFO] - Spark session stopped
+[2025-05-19 16:15:12,470] [INFO] - Application started, loading configuration...
+[2025-05-19 16:15:12,471] [INFO] - Spark log save to: None
+[2025-05-19 16:15:13,976] [INFO] - Spark session created successfully...
+[2025-05-19 16:15:13,976] [INFO] - Reading data from PostgreSQL...
+[2025-05-19 16:15:19,584] [INFO] - Data loaded from PostgreSQL and converted to Spark DataFrame.
+[2025-05-19 16:15:19,584] [INFO] - Model training started...
+[2025-05-19 16:16:09,552] [INFO] - Inertia: 5067666.72
+[2025-05-19 16:16:10,503] [INFO] - Model overwritten at: /Users/zwt/Desktop/github_project/spark-lab3/models
+[2025-05-19 16:17:19,039] [INFO] - Visualization results saved to: ./outputs/visualizations/pca_clusters.png and ./outputs/visualizations/cluster_counts.png
+[2025-05-19 16:17:19,759] [INFO] - Spark session stopped
+[2025-05-19 16:19:59,749] [INFO] - Application started, loading configuration...
+[2025-05-19 16:19:59,750] [INFO] - Spark log save to: None
+[2025-05-19 16:20:01,287] [INFO] - Spark session created successfully...
+[2025-05-19 16:20:01,287] [INFO] - Reading data from PostgreSQL...
+[2025-05-19 16:20:06,862] [INFO] - Data loaded from PostgreSQL and converted to Spark DataFrame.
+[2025-05-19 16:20:06,862] [INFO] - Model training started...
+[2025-05-19 16:20:51,351] [INFO] - Inertia: 5067666.72
+[2025-05-19 16:20:52,757] [INFO] - Model overwritten at: /Users/zwt/Desktop/github_project/spark-lab3/models
+[2025-05-19 16:21:58,945] [INFO] - Visualization results saved to: ./outputs/visualizations/pca_clusters.png and ./outputs/visualizations/cluster_counts.png
+[2025-05-19 16:21:59,477] [INFO] - Spark session stopped

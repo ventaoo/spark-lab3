@@ -1,12 +1,18 @@
 app_name: ModelTraining
-config:
-  spark.driver.memory: 4g
-  spark.executor.memory: 4g
-  spark.executor.cores: 2
-  spark.sql.shuffle.partitions: 100
-  spark.sql.execution.arrow.pyspark.enabled: true
-  spark.dynamicAllocation.enabled: false
-  spark.ui.showConsoleProgress: true
 
-  spark.eventLog.enabled: true
-  spark.eventLog.dir: /app/outputs/spark-events
+database:
+  dbname: postgres
+  user: postgres
+  password: 123456
+  host: localhost
+  port: 5432
+
+spark:
+  config:
+    spark.driver.memory: 4g
+    spark.executor.memory: 4g
+    spark.executor.cores: 2
+    spark.sql.shuffle.partitions: 100
+    spark.sql.execution.arrow.pyspark.enabled: true
+    spark.dynamicAllocation.enabled: false
+    spark.ui.showConsoleProgress: true
